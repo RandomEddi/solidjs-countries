@@ -1,16 +1,13 @@
 import { Component } from 'solid-js'
-import { Routes, Route } from '@solidjs/router'
-import { MantineProvider } from '@mantine/core'
-import { Main } from 'pages'
+import { Routes, Route, Router } from '@solidjs/router'
+import { Main } from '@/pages'
 
-const App: Component = () => {
+export const App: Component = () => {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <Router>
       <Routes>
         <Route path={'/'} component={Main} />
       </Routes>
-    </MantineProvider>
+    </Router>
   )
 }
-
-export default App
