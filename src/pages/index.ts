@@ -1,2 +1,2 @@
-export { Main } from './Main'
-export { Country } from './Country'
+export { MainPage } from './MainPage'
+export { CountryPage } from './CountryPage'

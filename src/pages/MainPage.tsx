@@ -12,7 +12,7 @@ import { Country, Search, Loading } from '@/components'
 const fetchAllCountries = async () =>
   (await fetch('https://restcountries.com/v3.1/all')).json()
 
-export const Main: Component = () => {
+export const MainPage: Component = () => {
   const [searchValue, setSearchValue] = createSignal('')
   const [countries] = createResource<CountryInterface[]>(fetchAllCountries)
 
