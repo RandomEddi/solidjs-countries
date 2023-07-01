@@ -6,6 +6,7 @@ export interface CountryInterface {
     png: string
     alt: string
   }
+  cca2: string
   borders: string[]
   timezone: [string]
   translations: {
