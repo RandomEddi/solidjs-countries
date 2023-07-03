@@ -29,12 +29,16 @@ export const MapPage: Component = () => {
           'py-1',
           'rounded-md',
           'text-white',
-          'hidden'
+          'hidden',
         )
       },
       onRegionClick,
     })
   }, [])
 
-  return <div class='relative h-[calc(100vh-3rem)]' id='map' />
+  return (
+    <div class='pt-4'>
+      <div class='relative h-[calc(100vh-4rem)]' id='map' />
+    </div>
+  )
 }

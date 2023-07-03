@@ -4,6 +4,7 @@
 
 body {
   overflow-y: scroll;
+  background-color: rgb(107, 114, 128);
 }
 
 div.active {
