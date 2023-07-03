@@ -1,7 +1,7 @@
 import { type Component, createResource, Switch, Match } from 'solid-js'
 import { Link, useParams } from '@solidjs/router'
 import type { CountryInterface } from '@/types'
-import { Loading } from '@/components'
+import { CountryDetails, Loading } from '@/components'
 
 const fetchCountry = async (cca: string): Promise<CountryInterface[]> =>
   (await fetch(`https://restcountries.com/v3.1/alpha/${cca}`)).json()
@@ -17,7 +17,7 @@ export const CountryPage: Component = () => {
   return (
     <Switch>
       <Match when={searchedCountries.error}>
-        <div class='bg-gray-500 min-h-[100vh] flex justify-center items-center'>
+        <div class='bg-gray-500 min-h-[calc(100vh-3rem)] flex justify-center items-center'>
           <p class='text-white mr-4 text-4xl'>Error</p>
           <Link
             href='/'
@@ -28,14 +28,12 @@ export const CountryPage: Component = () => {
         </div>
       </Match>
       <Match when={searchedCountries.loading}>
-        <div class='bg-gray-500 min-h-[100vh] flex justify-center items-center'>
+        <div class='bg-gray-500 min-h-[calc(100vh-3rem)] flex justify-center items-center'>
           <Loading size={40} borderSize={8} />
         </div>
       </Match>
       <Match when={searchedCountries()}>
-        <div class='bg-gray-500 min-h-[100vh]'>
-          {searchedCountries()![0].name.common}
-        </div>
+        <CountryDetails {...searchedCountries()![0]} />
       </Match>
     </Switch>
   )
