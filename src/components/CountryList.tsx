@@ -4,10 +4,10 @@ import { CountryListItem } from './CountryListItem'
 
 export const CountryList: Component<{
   countries: CountryInterface[]
-}> = ({ countries }) => {
+ }> = (props) => {
   return (
     <div class='grid justify-center gap-4 py-4'>
-      <For each={countries}>
+      <For each={props.countries}>
         {(country) => <CountryListItem {...country} />}
       </For>
     </div>
