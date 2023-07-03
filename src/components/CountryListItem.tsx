@@ -2,7 +2,7 @@ import { type Component } from 'solid-js'
 import type { CountryInterface } from '@/types'
 import { Link } from '@solidjs/router'
 
-export const Country: Component<CountryInterface> = (props) => {
+export const CountryListItem: Component<CountryInterface> = (props) => {
   return (
     <Link
       href={`/${props.cca2}`}
@@ -11,7 +11,7 @@ export const Country: Component<CountryInterface> = (props) => {
       <img
         loading='lazy'
         class='w-12 h-8'
-        src={props.flags.png}
+        src={props.flags.svg ||props.flags.png}
         alt={props.flags.alt}
       />
       <p>
