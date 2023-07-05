@@ -3,7 +3,7 @@ import { CountryInterface } from '@/types'
 import { Link } from '@solidjs/router'
 
 export const CountryDetails: Component<CountryInterface> = (props) => {
-  const [] = createSignal()
+  const [isCapitalBlured, setIsCapitalBlured] = createSignal(true)
 
   return (
     <div class='bg-gray-500 min-h-[calc(100vh-3rem)]'>
@@ -20,9 +20,9 @@ export const CountryDetails: Component<CountryInterface> = (props) => {
               {props.translations.rus.common}
             </p>
             {props.currencies && (
-              <div class='mt-6 flex flex-col text-white font-bold text-3xl items-center'>
-                <p>ВАЛЮТА</p>
-                <div class='flex gap-5 mt-2'>
+              <div class='mt-6 flex text-white font-bold text-3xl items-center'>
+                <p class='mr-3'>ВАЛЮТА:</p>
+                <div class='flex gap-5'>
                   <For
                     each={Array.from(
                       new Set(
@@ -35,6 +35,21 @@ export const CountryDetails: Component<CountryInterface> = (props) => {
                     {(currencySymbol) => <p>{currencySymbol}</p>}
                   </For>
                 </div>
+              </div>
+            )}
+            {props.capital[0] && (
+              <div class='mt-6 flex text-white font-bold text-3xl items-center'>
+                <p class='mr-3'>СТОЛИЦА:</p>
+                <span
+                  onClick={() => setIsCapitalBlured(false)}
+                  classList={{
+                    'blur-md': isCapitalBlured(),
+                    'bg-white': isCapitalBlured(),
+                    'cursor-pointer': isCapitalBlured(),
+                  }}
+                >
+                  {props.capital[0]}
+                </span>
               </div>
             )}
           </div>
