@@ -20,22 +20,13 @@ export const CountryDetails: Component<CountryInterface> = (props) => {
             <p class='text-white font-bold text-3xl mt-6'>
               {props.translations.rus.common}
             </p>
-            {props.currencies && (
+            {props.currencies && Object.entries(props.currencies)[0] && (
               <div class='mt-6 flex text-white font-bold text-3xl items-center'>
                 <p class='mr-3'>ВАЛЮТА:</p>
-                <div class='flex gap-5'>
-                  <For
-                    each={Array.from(
-                      new Set(
-                        Object.entries(props.currencies).map(
-                          (currency) => currency[1].symbol,
-                        ),
-                      ),
-                    )}
-                  >
-                    {(currencySymbol) => <p>{currencySymbol}</p>}
-                  </For>
-                </div>
+                <p>
+                  {Object.entries(props.currencies)[0][1].name}(
+                  {Object.entries(props.currencies)[0][1].symbol})
+                </p>
               </div>
             )}
             {props.capital[0] && (
