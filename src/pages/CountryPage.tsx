@@ -1,4 +1,10 @@
-import { type Component, createResource, Switch, Match } from 'solid-js'
+import {
+  type Component,
+  createResource,
+  Switch,
+  Match,
+  createMemo,
+} from 'solid-js'
 import { Link, useParams } from '@solidjs/router'
 import type { CountryInterface } from '@/types'
 import { CountryDetails, Loading } from '@/components'
@@ -7,10 +13,12 @@ const fetchCountry = async (cca: string): Promise<CountryInterface[]> =>
   (await fetch(`https://restcountries.com/v3.1/alpha/${cca}`)).json()
 
 export const CountryPage: Component = () => {
-  const { country } = useParams()
-
+  const countryCCE = createMemo(() => {
+    return useParams().country
+  }, useParams())
+  
   const [searchedCountries] = createResource<CountryInterface[], string>(
-    country,
+    countryCCE,
     fetchCountry,
   )
 

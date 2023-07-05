@@ -1,6 +1,7 @@
 import { createSignal, type Component, For } from 'solid-js'
 import { CountryInterface } from '@/types'
 import { Link } from '@solidjs/router'
+import { CountryBorders } from './CountryBorders'
 
 export const CountryDetails: Component<CountryInterface> = (props) => {
   const [isCapitalBlured, setIsCapitalBlured] = createSignal(true)
@@ -8,7 +9,7 @@ export const CountryDetails: Component<CountryInterface> = (props) => {
   return (
     <div class='bg-gray-500 min-h-[calc(100vh-3rem)]'>
       <div class='container mx-auto pt-10'>
-        <div class='flex w-full'>
+        <div class='flex w-full mb-8'>
           <img
             class='w-[40%] mr-40'
             src={props.flags.svg || props.flags.png}
@@ -54,6 +55,7 @@ export const CountryDetails: Component<CountryInterface> = (props) => {
             )}
           </div>
         </div>
+        {props.borders && <CountryBorders borders={props.borders} />}
       </div>
       <Link
         class='fixed right-10 top-14 text-5xl inline text-gray-500 bg-black hover:bg-neutral-600 rounded-full pb-2.5 px-3'

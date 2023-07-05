@@ -8,7 +8,7 @@ export interface CountryInterface {
     alt: string
   }
   cca2: string
-  borders: string[]
+  borders?: string[]
   timezone: string[]
   capital: string[]
   currencies?: Record<
